@@ -9,6 +9,10 @@ using std::istringstream;
 void PrintGrid(std::vector<std::vector<int>> grid); // Function declaration
 std::vector<std::vector<int>> ReadGridFromFile();
 
+enum class State {kEmpty, kObstacle};
+
+string CellString(State cell);
+
 int main()
 {
     std::vector<std::vector<int>> grid = ReadGridFromFile();
@@ -54,4 +58,13 @@ std::vector<std::vector<int>> ReadGridFromFile()
         }
     }
     return grid;
+}
+
+string CellString(State cell)
+{
+    switch(cell)
+    {
+        case State::kObstacle: return "⛰️";
+        default: return "0   ";
+    }
 }
